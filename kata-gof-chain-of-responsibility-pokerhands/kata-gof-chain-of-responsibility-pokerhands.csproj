@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>kata_gof_chain_of_responsibility_pokerhands</RootNamespace>
+  </PropertyGroup>
+
+</Project>
