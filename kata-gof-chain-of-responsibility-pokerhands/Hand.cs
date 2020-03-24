@@ -1,4 +1,6 @@
-﻿namespace kata_gof_chain_of_responsibility_pokerhands
+﻿using System.Collections.Generic;
+
+namespace kata_gof_chain_of_responsibility_pokerhands
 {
     public class Hand
     {
@@ -7,6 +9,7 @@
 
         public string Name { get; }
         public CardValue HighCard { get; private set; }
+        public List<CardValue> CardValues { get; } = new List<CardValue>();
 
         public static Hand Parse(string playerInput)
         {
@@ -30,7 +33,11 @@
 
         private void Add(Card card)
         {
-            HighCard = CardValue.Ace;
+            CardValues.Add(card.Value);
+            if (card.Value > HighCard)
+            {
+                HighCard = card.Value;
+            }
         }
     }
 }
