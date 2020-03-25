@@ -8,7 +8,6 @@ namespace kata_gof_chain_of_responsibility_pokerhands
         private const int NumberOfCards = 5;
 
         public string Name { get; }
-        public CardValue HighCard { get; private set; }
         public List<CardValue> CardValues { get; } = new List<CardValue>();
 
         public static Hand Parse(string playerInput)
@@ -34,10 +33,6 @@ namespace kata_gof_chain_of_responsibility_pokerhands
         private void Add(Card card)
         {
             CardValues.Add(card.Value);
-            if (card.Value > HighCard)
-            {
-                HighCard = card.Value;
-            }
         }
     }
 }
