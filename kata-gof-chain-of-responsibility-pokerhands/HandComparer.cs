@@ -1,6 +1,4 @@
-﻿using static System.String;
-
-namespace kata_gof_chain_of_responsibility_pokerhands
+﻿namespace kata_gof_chain_of_responsibility_pokerhands
 {
     public class HandComparer
     {
@@ -14,11 +12,15 @@ namespace kata_gof_chain_of_responsibility_pokerhands
 
             var classifierChain = new FullHouseClassifier();
             classifierChain.Next = new PairClassifier();
+            classifierChain.Next.Next = new HighCardClassifier();
+
 
             var classificationPlayer1 = classifierChain.Classify(hand1);
             var classificationPlayer2 = classifierChain.Classify(hand2);
 
-            var winner = classificationPlayer1.IsBetterThan(classificationPlayer2) ? classificationPlayer1 : classificationPlayer2;
+            var winner = classificationPlayer1.IsBetterThan(classificationPlayer2)
+                ? classificationPlayer1
+                : classificationPlayer2;
             var winnerMessage = winner.ToWinnerString();
 
             return winnerMessage;
