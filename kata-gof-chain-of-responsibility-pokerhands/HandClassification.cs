@@ -22,6 +22,11 @@ namespace kata_gof_chain_of_responsibility_pokerhands
             return Rank > otherHand.Rank;
         }
 
+        public bool IsEqualTo(HandClassification otherHand)
+        {
+            return !IsBetterThan(otherHand) && !otherHand.IsBetterThan(this);
+        }
+
         protected abstract bool IsBetterThanHandWithSameRank(HandClassification otherHand);
         
         public abstract string ToWinnerString();

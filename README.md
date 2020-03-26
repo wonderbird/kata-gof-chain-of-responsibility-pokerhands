@@ -1,14 +1,16 @@
-# Poker Hands
+# Poker Hand
+
+In this kata you implement the Gang Of Four Chain of Responsibility Pattern [[1](#ref-1), [2](#ref-2), [3](#ref-3)].
 
 Origin: Coding Dojo: [Poker Hands](http://codingdojo.org/kata/PokerHands/)
 
 ## About this Kata
 
-This kata is blatantly stolen from acm.uva.es/p/v103/10315.html It is a subset of KataTexasHoldEm , which is a very large Kata.
+This kata is adopted from [Poker Hands](http://codingdojo.org/kata/PokerHands/), which is blatantly stolen from acm.uva.es/p/v103/10315.html It is a subset of KataTexasHoldEm , which is a very large Kata.
 
 ## Problem Description
 
-Your job is to compare several pairs of poker hands and to indicate which, if either, has a higher rank.
+Your job is to rank a poker hand.
 
 ## Poker rules description
 
@@ -26,19 +28,14 @@ A poker hand consists of 5 cards dealt from the deck. Poker hands are ranked by 
 * Four of a kind: 4 cards with the same value. Ranked by the value of the 4 cards.
 * Straight flush: 5 cards of the same suit with consecutive values. Ranked by the highest card in the hand.
 
-## Clues
-
-None as yet.
-
 ## Suggested Test Cases
 
 Sample input:
 
 ```
-Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH
-Black: 2H 4S 4C 2D 4H  White: 2S 8S AS QS 3S
-Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C KH
-Black: 2H 3D 5S 9C KD  White: 2D 3H 5C 9S KH
+2C 3H 4S 8C AH
+2H 4S 4C 2D 4H
+TH JH QH KH AH
 ```
 
 Each row of input is a game with two players. The first five cards belong to the player named “Black” and the second five cards belong to the player named “White”.
@@ -46,8 +43,20 @@ Each row of input is a game with two players. The first five cards belong to the
 Sample output:
 
 ```
-White wins. - with high card: Ace 
-Black wins. - with full house: 4 over 2 
-Black wins. - with high card: 9
-Tie.
+High card: Ace 
+Full house: 4 over 2 
+Straight flush: Ace
 ```
+
+## Finishing Touches
+
+- Avoid duplicated code (use `tools\dupfinder.bat`).
+- Fix all static code analysis warnings.
+
+## References
+
+<a name="ref-1">[1]</a> David Starr and others: "Chain of Responsibility" in "Pluralsight: Design Patterns Library", https://www.pluralsight.com/courses/patterns-library, last visited on Mar 11, 2020.
+
+<a name="ref-2">[2]</a> Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides: "Design Patterns: Elements of Reusable Object-Oriented Software", Addison Wesley, 1994, pp. 151ff, [ISBN 0-201-63361-2](https://en.wikipedia.org/wiki/Special:BookSources/0-201-63361-2).
+
+<a name="ref-3">[3]</a> Wikipedia: "Chain-of-responsibility pattern", https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern, last visited on Mar. 26, 2020.
