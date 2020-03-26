@@ -5,13 +5,13 @@ namespace kata_gof_chain_of_responsibility_pokerhands
     public class HandComparer
     {
         private readonly GameInputParser _gameInputParser = new GameInputParser();
-        private Classifier _classifier;
+        private HandClassifierChain _handClassifierChain;
 
         public string Compare(string input)
         {
             _gameInputParser.Parse(input);
 
-            _classifier = new Classifier();
+            _handClassifierChain = new HandClassifierChain();
 
             var inputSplitByHand = input.Split("  ");
             var classificationPlayer1 = ClassifyHand(inputSplitByHand[0]);
@@ -29,8 +29,7 @@ namespace kata_gof_chain_of_responsibility_pokerhands
 
         private HandClassification ClassifyHand(string input)
         {
-            var hand1 = Hand.Parse(input);
-            var classificationPlayer1 = _classifier.Classify(hand1);
+            var classificationPlayer1 = _handClassifierChain.Classify(input);
             return classificationPlayer1;
         }
     }
