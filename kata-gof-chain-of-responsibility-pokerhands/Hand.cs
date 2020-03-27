@@ -6,7 +6,10 @@ namespace kata_gof_chain_of_responsibility_pokerhands
     {
         private const int NumberOfCards = 5;
 
+        // TODO: Replace the two lists by a single List<Card>
+
         public List<CardValue> CardValues { get; } = new List<CardValue>();
+        public List<CardColor> CardColors { get; set; } = new List<CardColor>();
 
         public static Hand Parse(string playerInput)
         {
@@ -18,6 +21,7 @@ namespace kata_gof_chain_of_responsibility_pokerhands
             {
                 var card = Card.Parse(inputArray[cardIndex]);
                 hand.CardValues.Add(card.Value);
+                hand.CardColors.Add(card.Color);
             }
             return hand;
         }

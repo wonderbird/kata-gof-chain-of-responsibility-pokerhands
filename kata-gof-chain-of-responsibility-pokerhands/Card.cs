@@ -25,8 +25,21 @@ namespace kata_gof_chain_of_responsibility_pokerhands
 
             var card = new Card();
             card.Value = mapCharacterToCardValue[input[0]];
+
+            var mapCharacterToCardColor = new Dictionary<char, CardColor>()
+            {
+                {'S', CardColor.Spades},
+                {'H', CardColor.Hearts},
+                {'C', CardColor.Clubs},
+                {'D', CardColor.Diamonds},
+            };
+            card.Color = mapCharacterToCardColor[input[1]];
+
+            // TODO: Split this function
             return card;
         }
+
+        public CardColor Color { get; private set; } = CardColor.Hearts;
 
         public CardValue Value { get; private set; } = CardValue.Two;
     }

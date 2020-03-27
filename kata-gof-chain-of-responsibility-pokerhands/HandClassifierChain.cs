@@ -1,4 +1,6 @@
-﻿namespace kata_gof_chain_of_responsibility_pokerhands
+﻿using System;
+
+namespace kata_gof_chain_of_responsibility_pokerhands
 {
     public class HandClassifierChain
     {
@@ -6,9 +8,12 @@
 
         public HandClassifierChain()
         {
-            _root = new FullHouseClassifier();
-            _root.Next = new PairClassifier();
-            _root.Next.Next = new HighCardClassifier();
+            throw new Exception("Fix the //TODOs");
+            // TODO: Make the chain initialization more beautiful
+            _root = new StraightFlushClassifier();
+            _root.Next = new FullHouseClassifier();
+            _root.Next.Next = new PairClassifier();
+            _root.Next.Next.Next = new HighCardClassifier();
         }
 
         public IHandClassification Classify(string handString)

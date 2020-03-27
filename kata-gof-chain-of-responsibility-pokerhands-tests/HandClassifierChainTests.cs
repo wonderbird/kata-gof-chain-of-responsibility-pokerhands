@@ -35,5 +35,15 @@ namespace kata_gof_chain_of_responsibility_pokerhands_tests
             var actual = classifier.Classify(input).ToString();
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData("Straight flush: Ace", "TH JH QH KH AH")]
+        [InlineData("High card: Ace", "TH JH QD KC AS")]
+        public void Classify_StraightFlush(string expected, string input)
+        {
+            var classifier = new HandClassifierChain();
+            var actual = classifier.Classify(input).ToString();
+            Assert.Equal(expected, actual);
+        }
     }
 }
