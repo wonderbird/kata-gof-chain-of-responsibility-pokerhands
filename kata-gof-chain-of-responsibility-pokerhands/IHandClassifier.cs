@@ -4,6 +4,6 @@
     {
         public IHandClassifier Next { get; set; }
 
-        HandClassification Classify(Hand hand);
+        IHandClassification Classify(Hand hand);
     }
 }

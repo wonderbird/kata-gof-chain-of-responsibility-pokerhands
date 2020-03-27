@@ -15,10 +15,10 @@ namespace kata_gof_chain_of_responsibility_pokerhands
                     "Invalid call to property \"Next\". HighCardClassifier is the last classifier in the chain.");
         }
 
-        public HandClassification Classify(Hand hand)
+        public IHandClassification Classify(Hand hand)
         {
             var highCard = hand.CardValues.Max();
-            return new HighCardClassification(highCard, hand.Name);
+            return new HighCardClassification(highCard);
         }
     }
 }

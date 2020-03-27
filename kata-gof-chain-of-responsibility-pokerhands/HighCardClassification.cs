@@ -1,24 +1,17 @@
 ﻿namespace kata_gof_chain_of_responsibility_pokerhands
 {
-    public class HighCardClassification : HandClassification
+    public class HighCardClassification : IHandClassification
     {
         private readonly CardValue _cardValue;
 
-        public HighCardClassification(CardValue cardValue, string name)
-            : base(Rank.HighCard, name)
+        public HighCardClassification(CardValue cardValue)
         {
             _cardValue = cardValue;
         }
 
-        protected override bool IsBetterThanHandWithSameRank(HandClassification otherHand)
+        public override string ToString()
         {
-            var otherHandCast = (HighCardClassification) otherHand;
-            return _cardValue > otherHandCast._cardValue;
-        }
-
-        public override string ToWinnerString()
-        {
-            var message = $"{Name} wins. - with high card: {_cardValue}";
+            var message = $"High card: {_cardValue}";
             return message;
         }
     }

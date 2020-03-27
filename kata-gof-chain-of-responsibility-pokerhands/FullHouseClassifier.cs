@@ -5,7 +5,7 @@ namespace kata_gof_chain_of_responsibility_pokerhands
     public class FullHouseClassifier : IHandClassifier
     {
         public IHandClassifier Next { get; set;  }
-        public HandClassification Classify(Hand hand)
+        public IHandClassification Classify(Hand hand)
         {
             var nOfAKindCategorizer = new NOfAKindCategorizer(hand);
 
@@ -18,7 +18,7 @@ namespace kata_gof_chain_of_responsibility_pokerhands
                 var tripletCardValue = nOfAKindCategorizer.NOfAKindValues(3).First();
                 var pairCardValue = nOfAKindCategorizer.NOfAKindValues(2).First();
 
-                return new FullHouseClassification(tripletCardValue, pairCardValue, hand.Name);
+                return new FullHouseClassification(tripletCardValue, pairCardValue);
             }
 
             return Next.Classify(hand);

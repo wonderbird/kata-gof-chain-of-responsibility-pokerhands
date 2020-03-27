@@ -1,25 +1,20 @@
 ﻿namespace kata_gof_chain_of_responsibility_pokerhands
 {
-    public class FullHouseClassification : HandClassification
+    public class FullHouseClassification : IHandClassification
     {
-        private CardValue _tripletCardValue;
-        private CardValue _pairCardValue;
+        private readonly CardValue _tripletCardValue;
+        private readonly CardValue _pairCardValue;
 
-        public FullHouseClassification(CardValue tripletCardValue, CardValue pairCardValue, string name)
-            : base(Rank.FullHouse, name)
+        public FullHouseClassification(CardValue tripletCardValue, CardValue pairCardValue)
         {
             _tripletCardValue = tripletCardValue;
             _pairCardValue = pairCardValue;
         }
 
-        protected override bool IsBetterThanHandWithSameRank(HandClassification otherHand)
+        public override string ToString()
         {
-            return false;
-        }
-
-        public override string ToWinnerString()
-        {
-            return $"{Name} wins. - with full house: {_tripletCardValue} over {_pairCardValue}";
+            var message = $"Full house: {_tripletCardValue} over {_pairCardValue}";
+            return message;
         }
     }
 }

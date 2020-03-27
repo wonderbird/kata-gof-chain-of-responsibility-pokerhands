@@ -4,35 +4,26 @@ namespace kata_gof_chain_of_responsibility_pokerhands
 {
     public class Hand
     {
-        private const int NameFieldIndex = 0;
         private const int NumberOfCards = 5;
 
-        public string Name { get; }
         public List<CardValue> CardValues { get; } = new List<CardValue>();
 
         public static Hand Parse(string playerInput)
         {
             var inputArray = playerInput.Split(' ');
 
-            var name = inputArray[NameFieldIndex].Remove(inputArray[NameFieldIndex].Length - 1);
-            var hand = new Hand(name);
+            var hand = new Hand();
 
-            for (var cardIndex = 1; cardIndex <= NumberOfCards; cardIndex++)
+            for (var cardIndex = 0; cardIndex < NumberOfCards; cardIndex++)
             {
                 var card = Card.Parse(inputArray[cardIndex]);
-                hand.Add(card);
+                hand.CardValues.Add(card.Value);
             }
             return hand;
         }
 
-        private Hand(string name)
+        private Hand()
         {
-            Name = name;
-        }
-
-        private void Add(Card card)
-        {
-            CardValues.Add(card.Value);
         }
     }
 }

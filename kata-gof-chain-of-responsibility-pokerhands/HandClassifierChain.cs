@@ -11,7 +11,7 @@
             _root.Next.Next = new HighCardClassifier();
         }
 
-        public HandClassification Classify(string handString)
+        public IHandClassification Classify(string handString)
         {
             var hand = Hand.Parse(handString);
             return _root.Classify(hand);
