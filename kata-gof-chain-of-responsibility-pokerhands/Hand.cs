@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace kata_gof_chain_of_responsibility_pokerhands
 {
@@ -6,10 +7,9 @@ namespace kata_gof_chain_of_responsibility_pokerhands
     {
         private const int NumberOfCards = 5;
 
-        // TODO: Replace the two lists by a single List<Card>
-
-        public List<CardValue> CardValues { get; } = new List<CardValue>();
-        public List<CardColor> CardColors { get; set; } = new List<CardColor>();
+        public List<Card> Cards { get; } = new List<Card>();
+        public IEnumerable<CardValue> CardValues => Cards.Select(c => c.Value);
+        public IEnumerable<CardColor> CardColors => Cards.Select(c => c.Color);
 
         public static Hand Parse(string playerInput)
         {
@@ -20,9 +20,9 @@ namespace kata_gof_chain_of_responsibility_pokerhands
             for (var cardIndex = 0; cardIndex < NumberOfCards; cardIndex++)
             {
                 var card = Card.Parse(inputArray[cardIndex]);
-                hand.CardValues.Add(card.Value);
-                hand.CardColors.Add(card.Color);
+                hand.Cards.Add(card);
             }
+
             return hand;
         }
 

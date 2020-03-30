@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace kata_gof_chain_of_responsibility_pokerhands
 {
-    public class NOfAKindCategorizer
+    public class NOfAKind
     {
         private readonly Dictionary<CardValue, int> _mapCardValueToOccurrences = new Dictionary<CardValue, int>
         {
@@ -22,7 +22,7 @@ namespace kata_gof_chain_of_responsibility_pokerhands
             {CardValue.Ace, 0},
         };
 
-        public NOfAKindCategorizer(Hand hand)
+        public NOfAKind(Hand hand)
         {
             foreach (var cardValue in hand.CardValues)
             {

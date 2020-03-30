@@ -2,21 +2,20 @@
 
 namespace kata_gof_chain_of_responsibility_pokerhands
 {
-    public class FullHouseClassifier : IHandClassifier
+    public class FullHouseClassifier : HandClassifier
     {
-        public IHandClassifier Next { get; set;  }
-        public IHandClassification Classify(Hand hand)
+        public override IHandClassification Classify(Hand hand)
         {
-            var nOfAKindCategorizer = new NOfAKindCategorizer(hand);
+            var nOfAKind = new NOfAKind(hand);
 
-            var hasThreeOfAKind = nOfAKindCategorizer.HasNOfAKind(3);
-            var hasTwoOfAKind = nOfAKindCategorizer.HasNOfAKind(2);
+            var hasThreeOfAKind = nOfAKind.HasNOfAKind(3);
+            var hasTwoOfAKind = nOfAKind.HasNOfAKind(2);
             var isFullHouse = hasThreeOfAKind && hasTwoOfAKind;
 
             if (isFullHouse)
             {
-                var tripletCardValue = nOfAKindCategorizer.NOfAKindValues(3).First();
-                var pairCardValue = nOfAKindCategorizer.NOfAKindValues(2).First();
+                var tripletCardValue = nOfAKind.NOfAKindValues(3).First();
+                var pairCardValue = nOfAKind.NOfAKindValues(2).First();
 
                 return new FullHouseClassification(tripletCardValue, pairCardValue);
             }

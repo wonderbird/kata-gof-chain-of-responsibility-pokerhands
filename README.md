@@ -10,7 +10,13 @@ This kata is adopted from [Poker Hands](http://codingdojo.org/kata/PokerHands/),
 
 ## Problem Description
 
-Your job is to rank a poker hand.
+Your job is use the Chain of Responsibility Pattern in to classify a poker hand [[1](#ref-1), [2](#ref-2), [3](#ref-3)].
+
+![Chain of Responsibility Pattern](ChainOfResponsibilityPattern.png)
+
+- **HandClassifierChain** provides the `Classify` method as the entrypoint for classifying the rank of a poker hand. It delegates classifying to each member of the linked list with head `_root`.
+
+- **HandClassifier** is the interface poker hand rank classifiers. A classifier is a dedicated class finding out whether a `Hand` has the rank the classifier represents. By using `HandClassifier.RegisterNext` you build a chain of classifiers sorted from highest rank to lowest rank.
 
 ## Poker rules description
 
@@ -36,6 +42,7 @@ Sample input:
 2C 3H 4S 8C AH
 2H 4S 4C 2D 4H
 TH JH QH KH AH
+...
 ```
 
 Each row of input is a game with two players. The first five cards belong to the player named “Black” and the second five cards belong to the player named “White”.
@@ -46,6 +53,7 @@ Sample output:
 High card: Ace 
 Full house: 4 over 2 
 Straight flush: Ace
+...
 ```
 
 ## Finishing Touches

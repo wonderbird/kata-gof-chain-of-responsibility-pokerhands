@@ -1,49 +1,54 @@
-﻿using System.Net.Http;
+﻿using System.Linq;
 
 namespace kata_gof_chain_of_responsibility_pokerhands
 {
-    public class StraightFlushClassifier : IHandClassifier
+    public class StraightFlushClassifier : HandClassifier
     {
-        public IHandClassifier Next { get; set; }
-        public IHandClassification Classify(Hand hand)
+        public override IHandClassification Classify(Hand hand)
         {
-            hand.CardValues.Sort();
-
-            var isStraitFlush = true;
-            for (var index = 1; index < hand.CardValues.Count; index++)
-            {
-                var previousValue = hand.CardValues[index - 1];
-                var currentValue = hand.CardValues[index];
-                isStraitFlush = isStraitFlush && (currentValue == previousValue + 1);
-
-                var previousColor = hand.CardColors[index - 1];
-                var currentColor = hand.CardColors[index];
-                isStraitFlush = isStraitFlush && (currentColor == previousColor);
-            }
+            var areValuesAscending = AreValuesAscending(hand);
+            var areColorsSame = AreColorsSame(hand);
+            var isStraitFlush = areValuesAscending && areColorsSame;
 
             if (isStraitFlush)
             {
-                var highCard = hand.CardValues[^1];
+                var highCard = hand.CardValues.Max();
                 return new StraightFlushClassification(highCard);
             }
 
             return Next.Classify(hand);
         }
-    }
 
-    public class StraightFlushClassification : IHandClassification
-    {
-        private CardValue _highCard;
-
-        public StraightFlushClassification(CardValue highCard)
+        private bool AreColorsSame(Hand hand)
         {
-            _highCard = highCard;
+            var areColorsSame = true;
+
+            var colorEnumerator = hand.CardColors.GetEnumerator();
+            colorEnumerator.MoveNext();
+            var firstColor = colorEnumerator.Current;
+
+            while (colorEnumerator.MoveNext())
+            {
+                areColorsSame = areColorsSame && (firstColor == colorEnumerator.Current);
+            }
+
+            return areColorsSame;
         }
 
-        public override string ToString()
+        private bool AreValuesAscending(Hand hand)
         {
-            var message = $"Straight flush: {_highCard}";
-            return message;
+            var sortedCardValues = hand.CardValues.ToList();
+            sortedCardValues.Sort();
+
+            var areValuesAscending = true;
+            for (var index = 1; index < sortedCardValues.Count; index++)
+            {
+                var previousValue = sortedCardValues[index - 1];
+                var currentValue = sortedCardValues[index];
+                areValuesAscending = areValuesAscending && (currentValue == previousValue + 1);
+            }
+
+            return areValuesAscending;
         }
     }
 }

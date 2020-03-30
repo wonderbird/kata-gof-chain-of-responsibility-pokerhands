@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="kata_gof_chain_of_responsibility_pokerhands.HandClassifierChain">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <Members>
+      <Method Name="HandClassifierChain" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HandClassifierChain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kata_gof_chain_of_responsibility_pokerhands.HandClassifier">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAIAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HandClassifier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kata_gof_chain_of_responsibility_pokerhands.StraightFlushClassifier" Collapsed="true">
+    <Position X="3.75" Y="2.5" Width="1.5" />
+    <InheritanceLine Type="kata_gof_chain_of_responsibility_pokerhands.HandClassifier" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="2.247" />
+        <Point X="3.5" Y="2.812" />
+        <Point X="3.75" Y="2.812" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AABAAAAIAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StraightFlushClassifier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kata_gof_chain_of_responsibility_pokerhands.FullHouseClassifier" Collapsed="true">
+    <Position X="3.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FullHouseClassifier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kata_gof_chain_of_responsibility_pokerhands.PairClassifier" Collapsed="true">
+    <Position X="3.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PairClassifier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kata_gof_chain_of_responsibility_pokerhands.HighCardClassifier" Collapsed="true">
+    <Position X="3.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HighCardClassifier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kata_gof_chain_of_responsibility_pokerhands.Hand" Collapsed="true">
+    <Position X="5.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAIAAAAAAACAQAAAAAAAAg=</HashCode>
+      <FileName>Hand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
